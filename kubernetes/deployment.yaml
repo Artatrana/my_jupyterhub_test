@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jupyterhub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jupyterhub
+  template:
+    metadata:
+      labels:
+        app: jupyterhub
+    spec:
+      containers:
+      - name: jupyterhub
+        image: gcr.io/pacific-cargo-381919/jupyterhub:latest
+        ports:
+        - containerPort: 8000
